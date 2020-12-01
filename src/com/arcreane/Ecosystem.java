@@ -57,4 +57,8 @@ public class Ecosystem {
 
     public void raining(int rainQuantity) {
     }
+
+    public Prey[] getPreys() {
+        return m_PreyArray;
+    }
 }

@@ -15,6 +15,7 @@ public class Predator {
 
     public Predator(){
         m_iWaterToDrink = 1;
+        m_Smelling = new Smelling();
     }
 
     public Predator(Coords p_Coords){
@@ -56,6 +57,23 @@ public class Predator {
 
 
     public void hunt(){
+        Prey toHunt = null;
+        //demander au terrain la liste des proies
+        Prey[] preys = Ecosystem.getInstance().getPreys();
+        //passer à son odorat chaque proie pour tester si elle est accessible
+        for (Prey prey: preys) {
+            if(m_Smelling.checkIfHuntable(m_Coords, prey))
+            {
+                toHunt = prey;
+                break;
+            }
+        }
+        /*if(toHunt != null)
+          */
+        //Si son odorat determine qu'une proie est acessible
+        //Il se met en déplacment vers cette proie en mode
+        //  * chasse rapide si il est loin
+        //  * furtif si il est pret
     }
 
     public void drink(){
@@ -64,6 +82,12 @@ public class Predator {
     }
 
     public void step() {
-        drink();
+        //Algorithm qui détermine
+        //  * Est ce que je chasse
+        //  * Est ce que je bois
+        //  * Est ce que je déambule
+        //  ...
+        //drink();
+        hunt();
     }
 }
