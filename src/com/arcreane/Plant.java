@@ -7,4 +7,7 @@ public class Plant {
     public void grow(){
 
     }
+
+    public void step() {
+    }
 }

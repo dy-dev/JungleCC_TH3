@@ -7,10 +7,15 @@ public class Predator {
     private int m_iSpeed;
     private int m_iVigor;
 
+    private int m_iWaterToDrink;
+
     private Smelling m_Smelling;
     private Vision m_Vision;
     private Coords m_Coords;
 
+    public Predator(){
+        m_iWaterToDrink = 1;
+    }
 
     public Predator(Coords p_Coords){
         m_Coords = p_Coords;
@@ -54,5 +59,11 @@ public class Predator {
     }
 
     public void drink(){
+        WaterSpot waterSpot = Ecosystem.getInstance().getWaterSpot();
+        waterSpot.m_iWaterQuantity -= m_iWaterToDrink;
+    }
+
+    public void step() {
+        drink();
     }
 }
