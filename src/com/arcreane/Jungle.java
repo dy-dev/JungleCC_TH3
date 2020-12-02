@@ -1,5 +1,8 @@
 package com.arcreane;
 
+import com.arcreane.base.Ecosystem;
+import com.arcreane.base.Weather;
+
 public class Jungle {
 
     public static void main(String[] args) {

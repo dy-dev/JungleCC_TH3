@@ -1,4 +1,4 @@
-package com.arcreane;
+package com.arcreane.base;
 
 public class Weather {
     //Member variable to know where to rain
@@ -14,6 +14,7 @@ public class Weather {
 
         int rainQuantity = 100;
         m_Ecosystem.raining(rainQuantity);
+        m_Ecosystem.raining(0, 10);
     }
 
     public void step() {

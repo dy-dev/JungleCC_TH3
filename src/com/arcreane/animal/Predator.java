@@ -1,25 +1,24 @@
-package com.arcreane;
+package com.arcreane.animal;
 
-public class Predator {
+import com.arcreane.animal.senses.Smelling;
+import com.arcreane.base.Coords;
+import com.arcreane.base.Ecosystem;
+
+public class Predator extends Animal {
     private static int s_iAgeMaxPredator;
 
-    private int m_iAge;
-    private int m_iSpeed;
-    private int m_iVigor;
-
-    private int m_iWaterToDrink;
 
     private Smelling m_Smelling;
-    private Vision m_Vision;
-    private Coords m_Coords;
 
-    public Predator(){
+    public Predator() {
+        super(new Coords());
+        System.out.println("Je suis un prédateur");
         m_iWaterToDrink = 1;
         m_Smelling = new Smelling();
     }
 
-    public Predator(Coords p_Coords){
-        m_Coords = p_Coords;
+    public Predator(Coords p_Coords) {
+        super(p_Coords);
         hunt(); // <=> this.hunt();
     }
 
@@ -56,38 +55,37 @@ public class Predator {
     }
 
 
-    public void hunt(){
-        Prey toHunt = null;
-        //demander au terrain la liste des proies
-        Prey[] preys = Ecosystem.getInstance().getPreys();
-        //passer à son odorat chaque proie pour tester si elle est accessible
-        for (Prey prey: preys) {
-            if(m_Smelling.checkIfHuntable(m_Coords, prey))
-            {
-                toHunt = prey;
-                break;
-            }
-        }
+    public void hunt() {
+//        Prey toHunt = null;
+//        //demander au terrain la liste des proies
+//        Prey[] preys = Ecosystem.getInstance().getPreys();
+//        //passer à son odorat chaque proie pour tester si elle est accessible
+//        for (Prey prey : preys) {
+//            if (m_Smelling.checkIfHuntable(m_Coords, prey)) {
+//                toHunt = prey;
+//                break;
+//            }
+//        }
         /*if(toHunt != null)
-          */
+         */
         //Si son odorat determine qu'une proie est acessible
         //Il se met en déplacment vers cette proie en mode
         //  * chasse rapide si il est loin
         //  * furtif si il est pret
     }
 
-    public void drink(){
-        WaterSpot waterSpot = Ecosystem.getInstance().getWaterSpot();
-        waterSpot.m_iWaterQuantity -= m_iWaterToDrink;
-    }
 
+    @Override
     public void step() {
+        System.out.println("Je suis un prédateur et je step");
         //Algorithm qui détermine
         //  * Est ce que je chasse
         //  * Est ce que je bois
         //  * Est ce que je déambule
         //  ...
         //drink();
-        hunt();
+        //super.drink();
+        //hunt();
     }
+
 }
